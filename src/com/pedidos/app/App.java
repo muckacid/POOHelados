@@ -5,6 +5,7 @@
 package com.pedidos.app;
 
 import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.ui.FlatTextBorder;
 import com.pedidos.app.event.MiEventoListener;
 import com.pedidos.app.forms.FormFlavor;
 import com.pedidos.db.mysql.Manager;
@@ -17,7 +18,9 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
+import javax.swing.plaf.ColorUIResource;
 
 public class App extends javax.swing.JFrame implements MiEventoListener {
 
@@ -77,6 +80,7 @@ public class App extends javax.swing.JFrame implements MiEventoListener {
         jScrollPane3.setViewportView(jEditorPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Heladería don jellyTato");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         app_table_orders.setModel(new javax.swing.table.DefaultTableModel(
@@ -143,7 +147,7 @@ public class App extends javax.swing.JFrame implements MiEventoListener {
             tbb_pnl_ordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tbb_pnl_ordersLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -189,6 +193,7 @@ public class App extends javax.swing.JFrame implements MiEventoListener {
         });
 
         jLabel4.setBackground(new java.awt.Color(255, 51, 51));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pedidos/img/serch-icon.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -198,20 +203,24 @@ public class App extends javax.swing.JFrame implements MiEventoListener {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(app_flavors_txt_filter_name, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(app_flavors_txt_filter_name)
-                .addContainerGap())
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(app_flavors_txt_filter_name)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(app_flavors_txt_filter_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -239,7 +248,19 @@ public class App extends javax.swing.JFrame implements MiEventoListener {
 
         jLabel5.setText("Sabor");
 
+        app_flavor_form_txt_tag.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                app_flavor_form_txt_tagKeyReleased(evt);
+            }
+        });
+
         jLabel6.setText("Precio");
+
+        app_flavor_form_txt_price.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                app_flavor_form_txt_priceKeyReleased(evt);
+            }
+        });
 
         jLabel7.setText("ID");
 
@@ -276,20 +297,20 @@ public class App extends javax.swing.JFrame implements MiEventoListener {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(app_flavor_form_txt_id)
                             .addComponent(app_flavor_form_txt_tag)
-                            .addComponent(app_flavor_form_txt_price)
-                            .addComponent(app_flavor_form_txt_id)))
+                            .addComponent(app_flavor_form_txt_price)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(app_flavor_form_btn_new)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(app_flavor_form_btn_save)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(app_flavor_form_btn_delete)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 13, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -297,22 +318,22 @@ public class App extends javax.swing.JFrame implements MiEventoListener {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(app_flavor_form_txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(app_flavor_form_txt_tag)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(app_flavor_form_txt_price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(app_flavor_form_txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(app_flavor_form_txt_tag, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(app_flavor_form_txt_price, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(app_flavor_form_btn_save)
                     .addComponent(app_flavor_form_btn_delete)
                     .addComponent(app_flavor_form_btn_new))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout tbb_pnl_flavorsLayout = new javax.swing.GroupLayout(tbb_pnl_flavors);
@@ -323,8 +344,8 @@ public class App extends javax.swing.JFrame implements MiEventoListener {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         tbb_pnl_flavorsLayout.setVerticalGroup(
             tbb_pnl_flavorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -345,8 +366,8 @@ public class App extends javax.swing.JFrame implements MiEventoListener {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(app_tabbed, javax.swing.GroupLayout.PREFERRED_SIZE, 934, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addComponent(app_tabbed)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,7 +377,7 @@ public class App extends javax.swing.JFrame implements MiEventoListener {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 480));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 480));
 
         jMenu1.setText("Archivo");
 
@@ -406,10 +427,13 @@ public class App extends javax.swing.JFrame implements MiEventoListener {
         int fila = app_table_flavor.getSelectedRow();
         app_flavor_form_txt_id.setText(String.valueOf(app_table_flavor.getValueAt(fila, 0)));
         app_flavor_form_txt_tag.setText(String.valueOf(app_table_flavor.getValueAt(fila, 1)));
-        
+
         String price = String.valueOf(app_table_flavor.getValueAt(fila, 2)).split(" ")[1];
         app_flavor_form_txt_price.setText(price);
-        
+        app_flavor_form_txt_tag.setBorder(new FlatTextBorder());
+        app_flavor_form_txt_price.setBorder(new FlatTextBorder());
+        app_flavor_form_btn_save.setEnabled(true);
+
         // TODO add your handling code here:
     }//GEN-LAST:event_app_table_flavorMouseClicked
 
@@ -445,22 +469,11 @@ public class App extends javax.swing.JFrame implements MiEventoListener {
     }//GEN-LAST:event_app_flavor_form_btn_deleteActionPerformed
 
     private void app_flavor_form_btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_app_flavor_form_btn_saveActionPerformed
-
-        LineBorder lineError = new LineBorder(Color.RED, 1);
-//        LineBorder lineValidate = new LineBorder(Color.GREEN, 1);
-        LineBorder lineValidate = new LineBorder(Color.GREEN, 1);
-
         String id_txt = app_flavor_form_txt_id.getText().strip();
         String tag_txt = app_flavor_form_txt_id.getText().strip();
         String price_txt = app_flavor_form_txt_id.getText().strip();
 
-        app_flavor_form_txt_id.setBorder((id_txt.equals("")) ? lineError : lineValidate);
-        app_flavor_form_txt_tag.setBorder((tag_txt.equals("")) ? lineError : lineValidate);
-        app_flavor_form_txt_price.setBorder((price_txt.strip().equals("")) ? lineError : lineValidate);
-
-        if (!app_flavor_form_txt_id.getText().strip().equals("")
-                && !app_flavor_form_txt_tag.getText().strip().equals("")
-                && !app_flavor_form_txt_price.getText().strip().equals("")) {
+        if (!id_txt.equals("") && !tag_txt.equals("") && !price_txt.equals("")) {
             System.out.println("campos validos");
             try {
                 Flavor t = new Flavor();
@@ -482,20 +495,47 @@ public class App extends javax.swing.JFrame implements MiEventoListener {
         } else {
             JOptionPane.showMessageDialog(this, "Hay campos vacios");
         }
-
-//       
-
     }//GEN-LAST:event_app_flavor_form_btn_saveActionPerformed
 
     private void app_flavor_form_btn_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_app_flavor_form_btn_newActionPerformed
         cleanFormFlavor();
         try {
+            //FlatTextBorder border = new FlatTextBorder();
+            LineBorder border = new LineBorder(Color.yellow);
             int id = manager.getDAOFlavor().getLastId();
             app_flavor_form_txt_id.setText(String.valueOf(id + 1));
+            app_flavor_form_txt_tag.setBorder(border);
+            app_flavor_form_txt_price.setBorder(border);
+            app_flavor_form_btn_save.setEnabled(false);
+            
         } catch (SQLException ex) {
             System.out.println("Error al intentar obtener la ultima id");
         }
     }//GEN-LAST:event_app_flavor_form_btn_newActionPerformed
+
+    private void app_flavor_form_txt_tagKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_app_flavor_form_txt_tagKeyReleased
+        String tag_txt = app_flavor_form_txt_tag.getText().strip();
+        if (tag_txt.equals("")) {
+            LineBorder border = new LineBorder(Color.yellow);
+            app_flavor_form_txt_tag.setBorder(border);
+            app_flavor_form_btn_save.setEnabled(false);
+        } else {
+            FlatTextBorder border = new FlatTextBorder();
+            app_flavor_form_txt_tag.setBorder(border);
+            app_flavor_form_btn_save.setEnabled(true);
+        }
+    }//GEN-LAST:event_app_flavor_form_txt_tagKeyReleased
+
+    private void app_flavor_form_txt_priceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_app_flavor_form_txt_priceKeyReleased
+        String price_txt = app_flavor_form_txt_price.getText().strip();
+        if (price_txt.equals("")) {
+            LineBorder border = new LineBorder(Color.yellow);
+            app_flavor_form_txt_price.setBorder(border);
+        } else {
+            FlatTextBorder border = new FlatTextBorder();
+            app_flavor_form_txt_price.setBorder(border);
+        }
+    }//GEN-LAST:event_app_flavor_form_txt_priceKeyReleased
 
     /**
      * @param args the command line arguments
