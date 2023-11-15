@@ -10,5 +10,7 @@ public interface DAO<T> {
     public void delete(T t) throws SQLException;
     public T getOne(int id) throws SQLException;
     public List<T> getAll() throws SQLException;
+    public int getLastId()  throws SQLException;
+    
     
 }

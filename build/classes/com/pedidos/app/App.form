@@ -290,7 +290,7 @@
                               <Component id="jPanel2" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="269" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -319,7 +319,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" pref="0" max="32767" attributes="0"/>
+                              <Component id="jScrollPane2" pref="358" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -440,7 +440,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="app_flavor_form_btn_new" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="app_flavor_form_btn_edit" min="-2" max="-2" attributes="0"/>
+                                      <Component id="app_flavor_form_btn_save" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="app_flavor_form_btn_delete" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -453,28 +453,28 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="28" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="app_flavor_form_txt_id" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="app_flavor_form_txt_tag" max="32767" attributes="0"/>
                                   <Component id="jLabel5" min="-2" pref="22" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="app_flavor_form_txt_price" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel6" min="-2" pref="22" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="app_flavor_form_btn_edit" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="app_flavor_form_btn_save" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="app_flavor_form_btn_delete" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="app_flavor_form_btn_new" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -504,12 +504,12 @@
                         <Property name="editable" type="boolean" value="false"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="app_flavor_form_btn_edit">
+                    <Component class="javax.swing.JButton" name="app_flavor_form_btn_save">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Guardar"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="app_flavor_form_btn_editActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="app_flavor_form_btn_saveActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="app_flavor_form_btn_delete">

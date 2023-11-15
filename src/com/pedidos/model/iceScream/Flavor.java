@@ -29,10 +29,6 @@ public class Flavor {
         this.tag = tag;
         this.price = price;
     }
-    
-    
-
-    
 
     public int getId() {
         return id;
@@ -59,16 +55,11 @@ public class Flavor {
     }
 
     @Override
-    public String toString() {
-        return "Flavor{" + "id=" + id + ", tag=" + tag + ", price=" + price + '}';
-    }
-
-    @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + this.id;
-        hash = 89 * hash + Objects.hashCode(this.tag);
-        hash = 89 * hash + this.price;
+        int hash = 5;
+        hash = 29 * hash + this.id;
+        hash = 29 * hash + Objects.hashCode(this.tag);
+        hash = 29 * hash + this.price;
         return hash;
     }
 
@@ -92,6 +83,13 @@ public class Flavor {
         }
         return Objects.equals(this.tag, other.tag);
     }
+
+    @Override
+    public String toString() {
+        return "Flavor{" + "id=" + id + ", tag=" + tag + ", price=" + price + '}';
+    }
+
+   
     
     
 
